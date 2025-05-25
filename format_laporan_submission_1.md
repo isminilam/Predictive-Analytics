@@ -40,13 +40,13 @@ Dataset yang digunakan dalam proyek ini diambil dari situs . Dataset ini berisi 
 | --------------------- | -------------------------------------------------------------------- | ----------------- |
 | `gender`              | Jenis kelamin individu                                               | Categorical       |
 | `age`                 | Usia individu dalam tahun                                            | Numerical (Float) |
-| `hypertension`        | Status hipertensi                                                    | Categorical (Int) |
-| `heart_disease`       | Status penyakit jantung                                              | Categorical (Int) |
+| `hypertension`        | Status hipertensi                                                    | Numerical (Int)   |
+| `heart_disease`       | Status penyakit jantung                                              | Numerical (Int)   |
 | `smoking_history`     | Riwayat merokok                                                      | Categorical       |
 | `bmi`                 | Indeks massa tubuh                                                   | Numerical (Float) |
 | `HbA1c_level`         | Tingkat HbA1c (hemoglobin terglikasi)                                | Numerical (Float) |
 | `blood_glucose_level` | Kadar glukosa darah                                                  | Numerical (Int)   |
-| `diabetes`            | Label target                                                         | Categorical (Int) |
+| `diabetes`            | Label target                                                         | Numerical (Int)   |
 
 ### Informasi Awal Dataset:
 - Terdiri dari 9 kolom dengan 100.000 baris
@@ -59,6 +59,35 @@ Dataset yang digunakan dalam proyek ini diambil dari situs . Dataset ini berisi 
 1. Distribusi Kelas Target
    
    ![image](https://github.com/user-attachments/assets/9e35c752-d090-4424-ab94-84908055f849)
+
+2. Distribusi Fitur Numerik
+
+  ![image](https://github.com/user-attachments/assets/ef1abf06-ee26-44f5-b54a-48a5fac4d5d7)
+
+**Insight:**
+
+* `age`: Distribusi cukup merata dengan puncak di sekitar usia 70-80 tahun. Terdapat outlier ekstrem dengan usia di bawah 1 tahun.
+* `hypertension` dan `heart_disease`: Datanya tidak seimbang dengan mayoritas 0 (tidak memiliki riwayat).
+* `bmi`: Distribusi positively skewed (condong ke kanan), dengan satu puncak tajam.
+* `HbA1c_level`: Distribusi cenderung normal dengan puncak di sekitar 6.0–6.5.
+* `blood_glucose_level`: Distribusi tidak normal, dengan lonjakan pada kisaran 140–160.
+* `diabetes`: Sangat imbalanced, kelas 0 (non-diabetes) jauh lebih banyak dari kelas 1 (diabetes).
+
+3. Distribusi Fitur Kategorikal
+
+   ![image](https://github.com/user-attachments/assets/968b33ce-c974-4ba2-8099-e928ae74bc30)
+   ![image](https://github.com/user-attachments/assets/43f2de11-db8d-4e14-bcd8-22a3aad853a1)
+
+   **Insight:**
+   Berdasarkan visualisasi tersebut, jumlah female lebih banyak dibanding male pada dataset ini. Selain itu, pada distribusi riwayat merokok yaitu No Info dan never memiliki jumlah tertinggi.
+
+4. Korelasi Antar Fitur
+
+   ![image](https://github.com/user-attachments/assets/a88562e4-585a-48a6-a43a-2674173a5c6e)
+
+   **Insight:**
+Berdasarkan heatmap korelasi fitur numerik terhadap target `diabetes`, dapat diamati bahwa fitur `blood_glucose_level` dan `HbA1c_level` memiliki korelasi tertinggi yaitu 0.42 dan 0.40. Selain itu, beberapa fitur lain seperti `age`, `bmi`, `hypertension`, dan `heart_disease` punya kontribusi yang lebih kecil, tapi tetap informatif.
+
 
 
 ## Data Preparation
